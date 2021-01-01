@@ -5,3 +5,6 @@ Magnetic Spectrum Analyzer.ino DIY Magnetic Spectrum Analyzer with ATmega328P, h
 
 
 Meteo Station.ino Arduino Meteo Station with Wireless Power Supply
+
+
+Magnetometer.ino XYZ magnetometer with ATmega2560
