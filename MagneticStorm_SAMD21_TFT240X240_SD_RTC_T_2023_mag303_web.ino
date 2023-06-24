@@ -36,7 +36,7 @@ RTC_DS1307 rtc;
 #endif  // HAS_SDIO_CLASS
 
 
-#define TFT_CS     7
+#define TFT_CS     9
 #define TFT_RST    5
 #define TFT_DC     6
 Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
@@ -113,7 +113,7 @@ magneticstorm();
   float humidity = sht.getHumidity(); 
 
     tft.setTextSize(myfontsize);
-    tft.setTextColor(ST77XX_RED);
+    tft.setTextColor(ST77XX_WHITE);
     tft.setCursor(2+10, myboxh*4-10);
     tft.print(now22.month()); tft.print("/");
     tft.print(now22.day()); tft.print(" ");
@@ -136,7 +136,7 @@ sensors_event_t event2;
   if (deltaB==0) { deltaB=myB00; }
   nowB=deltaB - myB00; //(random(100)-0)/30.0;
   tft.setTextSize(1);
-  tft.setTextColor(ST77XX_RED);
+  tft.setTextColor(ST77XX_WHITE);
   tft.setCursor(1, 1);
   tft.print("LSM303D   Bh="); tft.print(deltaB*1000.0); tft.print("nT");
   //SerialUSB.println(nowB);
@@ -184,7 +184,8 @@ if (i1==60)
     dataFile.print(" Bx= ");dataFile.print(boutx);
     dataFile.print(" By= ");dataFile.print(bouty);
     dataFile.print(" Bz= ");dataFile.print(boutz);
-    dataFile.println(" ");
+    dataFile.print(" Bz= ");dataFile.print(boutz);
+    //dataFile.print(" T= "); dataFile.print(temp); dataFile.print(" C");
     dataFile.close();
   }
 
@@ -211,7 +212,7 @@ int mybarh = 60;
     Bbar = (b2[i]-0)*100;
     if (Bbar>mybarh-12) Bbar=mybarh-12;
     if (Bbar<-(mybarh-12)) Bbar=-(mybarh-12);
-    tft.fillRect(-1+60*4-i*4,mybarh*2+0, 3,-Bbar-1, ST77XX_BLACK);
+    tft.fillRect(-1+60*4-i*4,mybarh*2+0, 3,-Bbar-1, ST77XX_YELLOW);
     tft.fillRect(240-1,mybarh*2+0, 3,-1, ST77XX_RED);
     }
     
